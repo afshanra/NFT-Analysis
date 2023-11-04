@@ -12,11 +12,16 @@
 3) config.py: includes API keys for OpenSea. Configure your API keys in this file to access OpenSea data.
 
 
+
+
 The Download-Images Folder Includes A Go Script:
 
 nft_image_downloader.go: Downloads NFT images from a CSV file and stores them in designated folders. Run the script using:
 
         go run nft_image_downloader.go
+
+
+
 
 
 The Docker-Image Contains Docker-Related Files:
