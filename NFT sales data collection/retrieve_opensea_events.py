@@ -6,12 +6,12 @@ import sys
 from time import sleep
 
 try:
-    import config
+    import api_key
 except:
-    sys.exit('Unable to find ./config.py. Please see the instruction in README.md')
+    sys.exit('Unable to find ./api_key.py. Please see the instruction in README.md')
 
-if (config.OPENSEA_APIKEY == ''):
-    sys.exit('OPENSEA_APIKEY is empty in config.py')
+if (api_key.OPENSEA_APIKEY == ''):
+    sys.exit('OPENSEA_APIKEY is empty in api_key.py')
 
 
 def get_events(start_date, end_date, cursor='', event_type='successful', **kwargs):
@@ -26,7 +26,7 @@ def get_events(start_date, end_date, cursor='', event_type='successful', **kwarg
 
     headers = {
         "Accept": "application/json",
-        "X-API-KEY": config.OPENSEA_APIKEY
+        "X-API-KEY": api_key.OPENSEA_APIKEY
     }
     response = requests.request("GET", url, headers=headers, params=query)
 

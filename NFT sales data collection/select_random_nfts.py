@@ -6,13 +6,13 @@ from datetime import datetime, timedelta
 from requests.exceptions import Timeout, RequestException
 
 try:
-    import config
+    import api_key
 except ImportError:
-    print("Unable to find ./config.py. Please see the instruction in README.md")
+    print("Unable to find ./api_key.py")
     exit(1)
 
-if not config.OPENSEA_APIKEY:
-    print("OPENSEA_APIKEY is empty in config.py")
+if not api_key.OPENSEA_APIKEY:
+    print("OPENSEA_APIKEY is empty")
     exit(1)
 
 # Define the OpenSea API endpoint
@@ -22,7 +22,7 @@ OPENSEA_API_ENDPOINT = "https://api.opensea.io/api/v1/events"
 def get_events(start_datetime, end_datetime, cursor="", event_type="successful", limit=300):
     headers = {
         "Accept": "application/json",
-        "X-API-KEY": config.OPENSEA_APIKEY
+        "X-API-KEY": api_key.OPENSEA_APIKEY
     }
 
     params = {
@@ -96,14 +96,14 @@ def parse_event(event):
 # Define the main function to retrieve and save event data
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--start_datetime", required=True, help="Start date and time in ISO8601 format")
-    parser.add_argument("--end_datetime", required=True, help="End date and time in ISO8601 format")
+    parser.add_argument('-s', "--start_datetime", required=True, help="Start date and time in ISO8601 format")
+    parser.add_argument('-e', "--end_datetime", required=True, help="End date and time in ISO8601 format")
     args = parser.parse_args()
 
     start_datetime = datetime.fromisoformat(args.start_datetime)
     end_datetime = datetime.fromisoformat(args.end_datetime)
 
-    csv_filename = "Jul2022.csv"
+    csv_filename = "nft.csv"
 
     with open(csv_filename, mode="w", encoding="utf-8", newline="\n") as csv_file:
         fieldnames = [
