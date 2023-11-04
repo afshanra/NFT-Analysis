@@ -1,4 +1,4 @@
- The Data-Collection Folder Includes The Following Scripts:
+ The "NFT sales data collection" Folder Includes The Following Scripts:
 
 1) retrieve_opensea_events.py: Fetches NFT data for a given time frame and saves it to data.csv. Use the following command to run the script:
 
@@ -14,7 +14,7 @@
 
 
 
-The Download-Images Folder Includes A Go Script:
+The "Download NFT images" Folder Includes A Go Script:
 
 nft_image_downloader.go: Downloads NFT images from a CSV file and stores them in designated folders. Run the script using:
 
@@ -24,7 +24,7 @@ nft_image_downloader.go: Downloads NFT images from a CSV file and stores them in
 
 
 
-The Docker-Image Contains Docker-Related Files:
+The "Docker image" Folder Contains Docker-Related Files:
 
 1) docker-compose.yml: Defines two Docker containers - one for running the Go script and one for an IPFS local container.
 2) Dockerfile: Used to build the Go container.
