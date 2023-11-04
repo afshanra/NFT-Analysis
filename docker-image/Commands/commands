@@ -1,0 +1,23 @@
+# Stop the container 
+docker-compose stop goapp
+
+# Start it again
+docker-compose start goapp
+
+# Or stop and recreate it
+docker-compose stop goapp
+docker-compose rm goapp
+docker-compose up -d goapp
+
+This will stop the running container, remove it, and recreate it - which is useful if you want a clean restart.
+
+
+
+If you need to rebuild the image (eg after changing code), you would run:
+# Rebuild 
+docker-compose build goapp
+
+# Restart with rebuilt image
+docker-compose up -d --no-deps goapp
+
+docker-compose up -d --build --no-deps goapp
