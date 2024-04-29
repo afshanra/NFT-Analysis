@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  ipfs:
+    image: ipfs/go-ipfs
+    command: daemon --enable-gc
+    ports:
+      - 4001:4001
+      - 4001:4001/udp
+      - 127.0.0.1:8080:8080
+      - 127.0.0.1:5001:5001
+    volumes:
+      - ./ipfs_data:/export 
+      - ./ipfs_data:/data/ipfs
+    networks:
+      - proxynet
+    restart: always
+
+  nftipfs:
+    image: nft
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    stdin_open: true
+    tty: true
+
+    networks:
+      - proxynet
+    volumes:
+      - ./result:/data
+    
+
+    restart: always
+
+volumes:
+  ipfs_storage:
+
+networks:
+  proxynet:
+    name: custom_network

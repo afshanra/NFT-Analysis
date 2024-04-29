@@ -1,0 +1,9 @@
+imagehash
+scikit-image
+Pillow
+pandas
+requests
+cairosvg
+numpy
+
+
